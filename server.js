@@ -21,12 +21,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenence.hbs', {
-        pageTitle: 'Maintenence Mode',
-        pageBody: 'We are currently updating our website. Will be back shortly.'
-    });
-});
+// app.use((req, res, next) => {
+//     res.render('maintenence.hbs', {
+//         pageTitle: 'Maintenence Mode',
+//         pageBody: 'We are currently updating our website. Will be back shortly.'
+//     });
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -46,9 +46,17 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page',
+        welcomeMessage: 'Portfolio Page Here'
+    });
+});
+
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
-        pageTitle: 'About Page'
+        pageTitle: 'About Page',
+        welcomeMessage: `About the company. Local time: ${new Date().getHours()}:${new Date().getMinutes()}`
     });
 });
 
